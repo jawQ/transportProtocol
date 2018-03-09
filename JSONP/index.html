@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>JSONP-JSON with Padding</title>
+</head>
+
+<body>
+  welcome my coding website!
+
+
+<script>
+    // // 方式1: ajax调用接口---基本会有跨域的问题存在
+    // var xhr = new XMLHttpRequest()
+    // console.log('查看ajax对象')
+    // console.log(xhr)
+    // xhr.onreadystatechange = function () {
+    //   if (xhr.readyState == 4 && xhr.status == 200) {
+    //     console.log('返回数据...')
+    //     console.log(xhr.responseText)
+    //   }
+    // }
+    // // 当使用ajax来调用该接口,则会报跨域的错误
+    // xhr.open('get', 'http://192.168.1.110:666/forjsonp?callback=json', true)
+    // xhr.send()
+
+
+    // 方式2
+    function forjsonp(params) {
+      console.log('JSONP调用接口后查看返回值...')
+      console.log(params)
+    }
+    function JSONP() {
+      var script = document.createElement('script');
+      var body = document.getElementsByTagName('body')[0];
+      var quireUrl = "http://192.168.1.110:666/forjsonp?callback=forjsonp"; // 这里的IP要换成你电脑的IP
+      script.src = quireUrl;
+      script.charset = 'utf-8';
+      script.timeout = 120000;
+      body.insertBefore(script, body.lastChild);
+    }
+    JSONP()
+  </script>
+</body>
+
+</html>
