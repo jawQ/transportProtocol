@@ -5,11 +5,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./css/index.css">
   <title>Ajax</title>
 </head>
 
 <body>
-  <script src="./ajax.js"></script>
+  <div class="parent">
+    <div>
+      <button class="Jq_Ajax_get">点我发出jQuery的ajax的get请求</button>
+      <button class="Jq_Ajax_post">点我发出jQuery的ajax的post请求</button>
+    </div>
+    <div>
+      <button class="native_Ajax">点我发出原生XHR对象的ajax请求</button>
+    </div>
+    <div>
+      <button class="mock_jq_Ajax">点我发出js模仿jQuery的ajax请求</button>
+    </div>
+  </div>
+
+
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+  <script src="./js/Jq_Ajax.js"></script>
 </body>
 
 </html>

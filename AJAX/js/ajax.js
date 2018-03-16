@@ -1,14 +1,14 @@
 // 同步：
 console.log('查看XHR的API', "http://www.w3school.com.cn/xmldom/dom_http.asp")
 var queryUrl = 'https://easy-mock.com/mock/5aa25f5ba6dd8421dd47dbb7/rulerForSize/PostLoginData'
-var queryUrl2 = 'http://192.168.1.110:8192/AjaxGet?params=HelloWorld'
+var localQueryUrl2 = 'http://192.168.0.3:666/Ajax_get?params=HelloWorld'
+var onlineQueryUrl2 = 'https://wangten.com/Ajax_get?params=HelloWorld'
 function sendAjaxForAsync(is_async) {
   // 创建AJAX-对象:
   const xhr = new XMLHttpRequest()
   console.log('readyState是几时是0呢?从new XHR对象时,就已经是0了.不信你看接下来的输出是不是0')
   console.log(xhr.readyState)
   xhr.onreadystatechange = () => {
-    debugger
     if (is_async) {
       console.log('查看异步下的ajax请求参数...')
     } else {
@@ -35,6 +35,7 @@ function sendAjaxForAsync(is_async) {
     // console.log(xhr)
     // XHR的属性-罗列：
     console.log('由服务器返回的 HTTP 状态代码为：', xhr.status)
+    console.log('HTTP状态的说明为：', xhr.statusText)
     // console.log('HTTP 所有响应头部为：', xhr.getAllResponseHeaders())
     // 获取返回值
     // if (xhr.readyState == 4 && xhr.status == 200) {
@@ -55,13 +56,11 @@ function sendAjaxForAsync(is_async) {
     console.log('每次readyState的值改变时,查看是否有返回值了...')
     console.log(xhr.responseText)
   }
-  debugger
-  xhr.open('GET', queryUrl2, is_async)
+  xhr.open('GET', localQueryUrl2, is_async)
   // xhr.setRequestHeader('Content-type', 'application/json');
   // xhr.setRequestHeader("你快看我自定义头部", 'JawQ') // 必须是字母，否则会报错：Value is not a valid ByteString.
   // xhr.setRequestHeader("CustomHeader", 'JawQ') // 还得保证在open之后，再配置，否则报错：The object's state must be OPENED.
   // 在发送前，还能自定义请求头：
-  debugger
   xhr.send(null)
   // if (!is_async) {
   //   console.log('当同步时获取readyState方式')
